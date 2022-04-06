@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(0, 116, 177);
+    color: #F5EED5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.PostCard{
+    float: none;
+}

@@ -1,14 +1,17 @@
 import React from "react";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody } from "grommet";
 import { Link } from "react-router-dom";
 
 const User = ({ user }) => {
   return (
     <Card className="m-4">      
-      <CardBody>
+      <CardBody background="#87A878" margin='small'>
         <Link to={`/users/${user.id}`}><strong>{user.Email}</strong></Link>
-      <p><b>Display Name:</b> {user.DisplayName}</p>
-      <p><b>User Type:</b> {user.UserType.name}</p>
+        <ul className="users">
+          <li>Email: {user.email}</li>
+          <li>Username: {user.displayName}</li>
+          <li>{user.userType.name}</li>
+        </ul>
       </CardBody>
     </Card>
   );

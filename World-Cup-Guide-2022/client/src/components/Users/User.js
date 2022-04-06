@@ -6,9 +6,9 @@ const User = ({ user }) => {
   return (
     <Card className="m-4">      
       <CardBody>
-        <Link to={`/users/${user.id}`}></Link>
-      <p><b>Display Name:</b> {user.displayName}</p>
-      <p><b>Display Name:</b> {user.email}</p>
+        <Link to={`/users/${user.id}`}><strong>{user.Email}</strong></Link>
+      <p><b>Display Name:</b> {user.DisplayName}</p>
+      <p><b>User Type:</b> {user.UserType.name}</p>
       </CardBody>
     </Card>
   );

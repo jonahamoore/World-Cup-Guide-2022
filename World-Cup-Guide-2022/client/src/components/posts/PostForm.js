@@ -5,34 +5,20 @@ import { Post } from "../posts/PostCard";
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, CardGroup, CardImg, Form, FormGroup, Row, Col, Button, Label, Input  } from "reactstrap";
 
 export const PostForm = () => {
-    const {getPostById, addPost, editPost} = useContext(PostContext)
+    const {GetPostsById, addPost, editPost} = useContext(PostContext)
 
-    const [post, setPost] = useState(
-      {
-        userProfileId: 1,
+    const [post, setPost] = useState({
         title: "",
         content: "",
-        imageUrl: ""
-      }
-      
-    );
+        imageUrl:"",
+        userProfileId: JSON.parse(sessionStorage.getItem("userProfile")).id,
+    });
 
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
 
     const {postId} = useParams();
-
-    useEffect(()=> {
-      if(postId){
-          getPostById(postId)
-          .then(post => {
-            setPost(post)
-            setIsLoading(false)
-          })
-        } else {
-          setIsLoading (false)
-        }}, [])
 
     const handleControlledInputChange = (event)=> {
         const newPost = {...post}
@@ -48,14 +34,16 @@ export const PostForm = () => {
           setIsLoading(true);
           if (postId){
               editPost({
+                  userProfileId: JSON.parse(sessionStorage.getItem("userProfile")).id,
                   id: post.id,
                   title: post.title,
                   content: post.content,
-                  imageUrl: post.imageUrl
+                  imageUrl: post.imageUrl,
               })
               .then(() => navigate(`/posts/detail/${post.id}`))
           } else {
           addPost({
+              userProfileId: JSON.parse(sessionStorage.getItem("userProfile")).id,
               title: post.title,
               content: post.content,
               imageUrl: post.imageUrl
@@ -63,8 +51,20 @@ export const PostForm = () => {
           .then(navigate("/Posts"));
           }
       }
-      
     }
+
+    useEffect(()=> {
+      if(postId){
+          GetPostsById(postId)
+          .then(post => {
+            setPost(post)
+            setIsLoading(false)
+          })
+        } else {
+          setIsLoading (false)
+        }}, [])
+
+
     return(
     <Form>
   <FormGroup>
@@ -103,20 +103,6 @@ export const PostForm = () => {
       </FormGroup>
     </Col>
   </Row>
-  {/* <Row form>
-    <Col md={6}>
-      <FormGroup>
-        <Label for="ratingSclaePictureIcon">
-          Rating Scale Url:
-        </Label>
-        <Input
-          id="IconImageUrl"
-          name="postIconImageUrl"
-          onChange={handleControlledInputChange}
-        />
-      </FormGroup>
-    </Col>
-  </Row> */}
  
   <Button primary disabled={isLoading} type="submit" className="btn btn-primary" onClick={event => {event.preventDefault()
   handleSavePost()}}>{postId ? <>Save Post</> : <>Add Post</>}

@@ -32,7 +32,7 @@ export default function Header() {
               <NavLink tag={RRNavLink} to="/">Home</NavLink>
                 </NavItem>
             {/*checking if the current logged in user has usertype id of 1 (Admin) */}
-            {currentUser.email === "jonah@moore@gmail.com" ?  <NavItem>
+            {currentUser.email === "1" ?  <NavItem>
                   <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
                 </NavItem>  : "" } 
                 {/* <NavItem> 
@@ -41,10 +41,7 @@ export default function Header() {
                 <NavItem>
                 <NavLink tag={RRNavLink} to="/posts">Posts</NavLink>
                 </NavItem>
-                <NavItem> 
-                <NavLink tag={RRNavLink} to="/users">Tag Management</NavLink>
-                </NavItem>
-            </>
+              </>
 }
           </Nav>
           <Nav navbar>

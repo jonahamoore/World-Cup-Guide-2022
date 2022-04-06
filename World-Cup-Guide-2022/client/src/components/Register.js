@@ -7,20 +7,22 @@ export default function Register() {
   const navigate = useNavigate();
   const { register } = useContext(UserProfileContext);
 
+  
   const [displayName, setDisplayName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
   const registerClick = (e) => {
-    e.preventDefault();
-    if (password && password !== confirmPassword) {
-      alert("Passwords don't match. Are you who you say you are?.");
-    } else {
-      const userProfile = {  displayName, email };
-      register(userProfile, password)
-        .then(() => navigate("/"));
-    }
+     e.preventDefault();
+      if (password && password !== confirmPassword) {
+        alert("Passwords don't match. Do better.");
+      } else {
+        const userProfile = {displayName, email };
+        register(userProfile, password)
+          .then(() => navigate("/"));
+      }
+   
  };
 
   return (

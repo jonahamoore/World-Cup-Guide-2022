@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { PostContext } from "../../providers/PostProvider";
-import {Button} from "reactstrap";
+import {Button} from "grommet";
 import { Post } from "./PostCard";
 import { useNavigate } from "react-router-dom";
 

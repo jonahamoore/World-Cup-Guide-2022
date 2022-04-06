@@ -42,7 +42,7 @@ export const PostDetails = () => {
             </CardBody>
               
                 <Button color="#704E33" margin="xsmall" label="Delete Post" onClick={postDelete}></Button>
-                <Button color="#704E33" margin="xsmall" label="Edit" onClick={() => {navigate(`/Posts/edit/${post.id}`)}}></Button>
+                <Button color="#704E33" margin="xsmall" label="Edit" onClick={() => {navigate(`/posts/edit/${post.id}`)}}></Button>
             </Card>
         </div>
         </section>

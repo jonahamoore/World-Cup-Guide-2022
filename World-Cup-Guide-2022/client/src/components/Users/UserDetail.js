@@ -5,7 +5,7 @@ import { UserProfileContext } from "../../providers/UserProfileProvider";
 import User from "./User";
 
 export const UserDetails = () => {
-  const [userProfile, setUserProfile] = useState();
+  const [UserProfile, setUserProfile] = useState();
   const { getUser } = useContext(UserProfileContext);
   const { id } = useParams();
 
@@ -17,7 +17,7 @@ export const UserDetails = () => {
 
  
 
-  if (!userProfile) {
+  if (!UserProfile) {
     return null;
   }
 
@@ -25,10 +25,12 @@ export const UserDetails = () => {
       <div className="container">
       <div className="row justify-content-center">
         <div className="col-sm-12 col-lg-6">
-            <p><b>Email:</b> {userProfile.email}</p>
-           <p><b>Display Name:</b> {userProfile.displayName}</p>
+            <p><b>Email:</b> {UserProfile.Email}</p>
+           <p><b>Display Name:</b> {UserProfile.DisplayName}</p>
+      <p><b>User Type:</b> {UserProfile.UserType.Name}</p>
         </div>
       </div>
     </div>
   );
 };
+

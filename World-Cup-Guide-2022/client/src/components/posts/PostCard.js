@@ -1,14 +1,10 @@
 import React, {useContext, useEffect, useState} from "react"
-// import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button, CardGroup, CardImg } from "reactstrap";
 import { grommet, Box, Card, Button, Heading, Text, Paragraph, CardBody, CardImg, CardHeader } from "grommet";
 import { Link } from "react-router-dom";
-import { PostContext } from "../../providers/PostProvider";
-import { useNavigate } from "react-router-dom";
 import "./WorldCup.css";
 
 export const Post = ({ post }) => {
 
-  const navigate = useNavigate();
     if(JSON.parse(sessionStorage.getItem("userProfile")).id === '1'){
     }
 

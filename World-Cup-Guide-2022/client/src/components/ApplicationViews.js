@@ -9,6 +9,9 @@ import {UserProfileContext, UserProfileProvider,} from "../providers/UserProfile
 import { PostDetails } from "./posts/PostDetails";
 import {UserList} from "./users/UserList";
 import  {UserDetails}  from "./users/UserDetail";
+import { CommentList } from "./comments/CommentList";
+import { CommentForm } from "./comments/CommentForm";
+
 
 export const ApplicationViews = () => {
 
@@ -29,11 +32,17 @@ export const ApplicationViews = () => {
     <PostProvider>
       <Routes>
         <Route path="/users" element={<UserList />} />
-        <Route path="/users/:id" element={<UserDetails />} />       
+        <Route path="/users/:id" element={<UserDetails />} />
+
         <Route path="/posts" element= {<PostList />} />
         <Route path="/posts/add" element={<PostForm />} />
         <Route path="/posts/edit/:postId/*" element={<PostForm />} />
         <Route path="posts/detail/:postId/*" element={<PostDetails />} />
+
+        <Route path="/comments" element= {<CommentList />} />
+        <Route path="/comments/add" element={<CommentForm />} />
+        <Route path="/comments/edit/:commentId/*" element={<CommentForm />} />
+        <Route path="comments/detail/:commentId/*" element={<CommentDetails />} />
       </Routes>
     </PostProvider>
   </UserProfileProvider>

@@ -5,7 +5,7 @@ import "./WorldCup.css";
 
 export const Post = ({ post }) => {
 
-    if(JSON.parse(sessionStorage.getItem("userProfile")).id === '1'){
+    if(JSON.parse(sessionStorage.getItem("userProfile")).id === 1){
     }
 
   return (

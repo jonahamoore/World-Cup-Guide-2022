@@ -1,23 +1,70 @@
-{/* <div class="container">
-  <img src="/w3images/bandmember.jpg" alt="Avatar">
-  <p>Hello. How are you today?</p>
-  <span class="time-right">11:00</span>
-</div>
+import React, {useContext, useEffect, useState} from "react"
+import { grommet, Box, Card, Button, Heading, Text, Paragraph, CardBody, CardImg, CardHeader } from "grommet";
+import { Link } from "react-router-dom";
+import "./WorldCup.css";
 
-<div class="container darker">
-  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-  <p>Hey! I'm fine. Thanks for asking!</p>
-  <span class="time-left">11:01</span>
-</div>
+export const Comment = ({ comment, user }) => {
 
-<div class="container">
-  <img src="/w3images/bandmember.jpg" alt="Avatar">
-  <p>Sweet! So, what do you wanna do today?</p>
-  <span class="time-right">11:02</span>
-</div>
 
-<div class="container darker">
-  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-  <span class="time-left">11:05</span>
-</div> */}
+    if (comment.userProfileId === (JSON.parse(sessionStorage.getItem("userProfile")).id)) {
+
+      // if (e.target.id.startsWith("editChat")) {
+      //   const chatId = +e.target.id.split("-")[1]
+      //   MessageEditForm(chatId);
+      //   }}
+
+
+          return (
+            <>
+        <section class="message-card">
+          <div class="message-text"><b>{user.email}:</b> <em>{comment.message}</em></div>
+          <button class="message-edit btn btn-primary">modify</button>
+        </section>
+
+          
+    </>
+    )} else {
+      return (
+        <section class="message-card">
+          <div class="message-text"><b>${user.email}:</b> <em>{comment.message}</em></div>
+        </section>
+      )
+
+    }
+
+
+    
+
+
+
+    
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

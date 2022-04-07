@@ -13,7 +13,6 @@ export const PostList = () => {
 
       const navigate = useNavigate();
 
-//if else statement to display each category seperately so they do not loop over each other
      return (
        
         <div className="container">

@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using World_Cup_Guide_2022.Repositories;
+using Microsoft.IdentityModel.Tokens;
+
 
 namespace World_Cup_Guide_2022
 {
@@ -28,7 +30,7 @@ namespace World_Cup_Guide_2022
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
-            //services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
 
             services.AddControllers();

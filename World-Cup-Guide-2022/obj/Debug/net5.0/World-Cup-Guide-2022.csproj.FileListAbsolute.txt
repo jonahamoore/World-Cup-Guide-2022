@@ -53,3 +53,4 @@ C:\Users\jonah\workspace\Full-Stack-Capstone\World-Cup-Guide-2022\World-Cup-Guid
 C:\Users\jonah\workspace\Full-Stack-Capstone\World-Cup-Guide-2022\World-Cup-Guide-2022\obj\Debug\net5.0\World-Cup-Guide-2022.genruntimeconfig.cache
 C:\Users\jonah\workspace\Full-Stack-Capstone\World-Cup-Guide-2022\World-Cup-Guide-2022\obj\Debug\net5.0\ref\World-Cup-Guide-2022.dll
 C:\Users\jonah\workspace\Full-Stack-Capstone\World-Cup-Guide-2022\World-Cup-Guide-2022\bin\Debug\net5.0\package-lock.json
+C:\Users\jonah\workspace\Full-Stack-Capstone\World-Cup-Guide-2022\World-Cup-Guide-2022\bin\Debug\net5.0\client\database.json

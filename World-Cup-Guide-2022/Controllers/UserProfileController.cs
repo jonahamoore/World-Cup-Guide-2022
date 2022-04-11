@@ -62,5 +62,12 @@ namespace World_Cup_Guide_2022.Controllers
                 new { email = userProfile.Email },
                 userProfile);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _userRepository.Delete(id);
+            return NoContent();
+        }
     }
 }

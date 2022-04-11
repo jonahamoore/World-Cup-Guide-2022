@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserProfileContext } from "../../providers/UserProfileProvider";
 import User from "./User";
 
-const PostList = () => {
+export const UserList = () => {
   const { userProfiles, getAllUserProfiles } = useContext(UserProfileContext);
 
   useEffect(() => {
@@ -23,4 +23,3 @@ const PostList = () => {
   );
 };
 
-export default PostList;

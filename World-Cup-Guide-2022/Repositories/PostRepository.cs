@@ -159,27 +159,25 @@ namespace World_Cup_Guide_2022.Repositories
         }
         public void UpdatePost(Post post)
         {
-            using (var conn = Connection)
+            using (SqlConnection conn = Connection)
             {
                 conn.Open();
-                using (var cmd = conn.CreateCommand())
+
+                using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
                         UPDATE Post
-                           SET Title = @Title,
-                               Content = @Content,
-                               ratingScaleId = @ratingScaleId,
-                               ImageUrl = @ImageUrl,
-                               UserProfileId = @UserProfileId,
-                               UserTypeId = @UserTypeId
+                           SET Title = @title,
+                               Content = @content,
+                               ImageUrl = @imageUrl,
+                               UserProfileId = @userProfileId                          
                          WHERE Id = @Id";
 
-                    DbUtils.AddParameter(cmd, "@Title", post.Title);
-                    DbUtils.AddParameter(cmd, "@Title", post.Content);
-                    DbUtils.AddParameter(cmd, "@ImageUrl", post.ImageUrl);
-                    DbUtils.AddParameter(cmd, "@UserTypeId", post.UserTypeId);
-                    DbUtils.AddParameter(cmd, "@UserProfileId", post.UserProfileId);
-                    DbUtils.AddParameter(cmd, "@Id", post.Id);
+                    cmd.Parameters.AddWithValue("@title", post.Title);
+                    cmd.Parameters.AddWithValue("@content", post.Content);
+                    cmd.Parameters.AddWithValue("@imageUrl", post.ImageUrl);
+                    cmd.Parameters.AddWithValue("@userProfileId", post.UserProfileId);
+                    cmd.Parameters.AddWithValue("@id", post.Id);
 
                     cmd.ExecuteNonQuery();
                 }

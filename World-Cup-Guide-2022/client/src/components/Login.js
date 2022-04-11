@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+// import { Button, Form, FormGroup, Label, Input, CardBody, Card, Container, Row, CardHeader, CardFooter, Col, Jumbotron, CardTitle } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
+import { Box, Card, CardBody, CardTitle, CardFooter, Heading, Button } from "grommet";
+
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ export default function Login() {
     login({email, password})
       .then(r =>{
       if(r){
-      navigate("/")
+      navigate("/posts")
       }
       else{
         alert("Invalid email or password")
@@ -24,23 +27,39 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={loginSubmit}>
-      <fieldset>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
-        </FormGroup>
-        <FormGroup>
-          <Button>Login</Button>
-        </FormGroup>
-        <em>
-          Not registered? <Link to="/register">Register</Link>
-        </em>
-      </fieldset>
-    </Form>
+    <main className="container--login">
+
+            <Box align="center" justify="center" direction="column" fill="horizontal" flex pad="large" margin="large" >
+            <Card align="center" justify="center">
+            <CardBody align="center" justify="center">
+                <form className="form--login" onSubmit={loginSubmit}>
+                    <Box background="url()" align="center" justify="center" pad="small" margin="medium" >
+                    <Heading align="center" margin="xxsmall" textAlign="center" justify="center">Welcome</Heading>
+
+                    <h2 align="center" className="pleaseSignIn">Please sign in</h2>
+                    
+                    <fieldset className="emailAddressBox">
+                        <label for="email">Email: </label>
+                        <input id="email" type="text" label='Email' onChange={e => setEmail(e.target.value)}/>
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password</label>
+                        <input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                    </fieldset>
+                    <fieldset className="SignIn">
+                        <Button className="signInButton" color="#481D24"  label="Sign In" type="submit" align="center" justify="center"/>
+                    </fieldset>
+                    </Box>
+                </form>
+            </CardBody>
+            
+            <CardFooter textAlign="center">
+            
+                <Link to="/register"><h3>Not Registered?</h3></Link>
+            
+            </CardFooter>
+            </Card>
+            </Box>
+        </main>
   );
 }

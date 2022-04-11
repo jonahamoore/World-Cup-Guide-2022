@@ -31,7 +31,7 @@ export const PostDetails = () => {
         return (
           
         <section className="PostDetailsCard">
-        <div className="detailsCard">
+        <div align="center" margin="auto" className="detailsCard">
             <Card width="medium" pad="small" margin="small">
             <CardHeader>
               <h2 className="post_name">{post.title}</h2>
@@ -42,7 +42,7 @@ export const PostDetails = () => {
             </CardBody>
               
                 <Button color="#704E33" margin="xsmall" label="Delete Post" onClick={postDelete}></Button>
-                <Button color="#704E33" margin="xsmall" label="Edit" onClick={() => {navigate(`/Posts/edit/${post.id}`)}}></Button>
+                <Button color="#704E33" margin="xsmall" label="Edit" onClick={() => {navigate(`/posts/edit/${post.id}`)}}></Button>
             </Card>
         </div>
         </section>

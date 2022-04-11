@@ -7,6 +7,7 @@ export const UserProfileProvider =(props) =>{
 
   const apiUrl = "https://localhost:44311";
   const [userProfiles, setUserProfiles] = useState([]);
+  const [httpStatusCode, setHttpStatusCode] = useState([]);
   const userProfile = sessionStorage.getItem("userProfile");
   const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
 
@@ -67,7 +68,7 @@ export const UserProfileProvider =(props) =>{
 
   return (
     <UserProfileContext.Provider value={{ isLoggedIn, login, logout, register, getAllUserProfiles,
-    userProfiles, userProfile, setUserProfiles, getUser  }}>
+                                     userProfiles, userProfile, setUserProfiles, getUser  }}>
        {props.children}
     </UserProfileContext.Provider>
   );

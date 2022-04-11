@@ -1,74 +1,36 @@
-import React, { useState, useContext } from 'react';
-import { NavLink as RRNavLink } from "react-router-dom";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
-import { UserProfileContext } from "../providers/UserProfileProvider";
+import React from 'react';
+import { Anchor, Box, Header, Menu, Nav, ResponsiveContext, Button } from 'grommet';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserProfileContext } from '../providers/UserProfileProvider';
 
-
-export default function Header() {
+export const CollapsableNav = () => {
   const { isLoggedIn, logout } = useContext(UserProfileContext);
-  const currentUser = JSON.parse(sessionStorage.getItem("userProfile"));
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
 
-  return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">Worl Cup Guide 2022</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-               { /* When isLoggedIn === true, we will render the Home link */ }
-            {isLoggedIn &&
-              <>
-            <NavItem>
-              <NavLink tag={RRNavLink} to="/">Home</NavLink>
-                </NavItem>
-            {/*checking if the current logged in user has usertype id of 1 (Admin) */}
-            {currentUser.email === "jonah@moore@gmail.com" ?  <NavItem>
-                  <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
-                </NavItem>  : "" } 
-                {/* <NavItem> 
-                <NavLink tag={RRNavLink} to="/Comment">Comment Management</NavLink>
-                </NavItem> */}
-                <NavItem>
-                <NavLink tag={RRNavLink} to="/posts">Posts</NavLink>
-                </NavItem>
-                <NavItem> 
-                <NavLink tag={RRNavLink} to="/users">Tag Management</NavLink>
-                </NavItem>
-            </>
-}
-          </Nav>
-          <Nav navbar>
-            {isLoggedIn &&
-              <>
-                <NavItem>
-                  <a aria-current="page" className="nav-link"
-                    style={{ cursor: "pointer" }} onClick={logout}>Logout</a>
-                </NavItem>
-              </>
-            }
-            {!isLoggedIn &&
-              <>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/login">Login</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/register">Register</NavLink>
-                </NavItem>
-              </>
-            }
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
-  );
-}
+  return(
+  <Header className='navHeader'  background="grey" pad="small">
+    <Box className='NavBarBox' direction="row" align="center" gap="small" >
+      <h3><b>Welcome!</b></h3>
+    </Box>
+    <ResponsiveContext.Consumer>
+      {(responsive) =>
+        responsive === 'small' ? (
+          <Menu
+           label="Click me"
+            items={[
+              { label: 'This is', onClick: () => {} },
+              { label: 'The Menu', onClick: () => {} }
+            ]}
+          />
+        ) : (
+         <Nav direction="row" pad="small" className="navBar">
+            <Anchor href="posts"  label="Click Here to see unecessary opinions" />
+            <Anchor href="users" label="User Management" />
+            <Anchor href="comments" label="World Cup Message Board" />
+            <Button onClick={logout}>Logout</Button>                     
+         </Nav>
+        )
+      }
+    </ResponsiveContext.Consumer>
+  </Header>
+)};

@@ -1,70 +1,21 @@
 import React, {useContext, useEffect, useState} from "react"
 import { grommet, Box, Card, Button, Heading, Text, Paragraph, CardBody, CardImg, CardHeader } from "grommet";
 import { Link } from "react-router-dom";
-import "./WorldCup.css";
+import { Badge } from "bootstrap";
+import { useNavigate } from "react-router-dom";
 
-export const Comment = ({ comment, user }) => {
+// if (commentProp.userProfileId === (JSON.parse(sessionStorage.getItem("userProfile")).id)) 
 
+export const Comment = ({ comment }) => {
 
-    if (comment.userProfileId === (JSON.parse(sessionStorage.getItem("userProfile")).id)) {
-
-      // if (e.target.id.startsWith("editChat")) {
-      //   const chatId = +e.target.id.split("-")[1]
-      //   MessageEditForm(chatId);
-      //   }}
-
-
-          return (
-            <>
-        <section class="message-card">
-          <div class="message-text"><b>{user.email}:</b> <em>{comment.message}</em></div>
-          <button class="message-edit btn btn-primary">modify</button>
-        </section>
-
-          
-    </>
-    )} else {
+    
       return (
-        <section class="message-card">
-          <div class="message-text"><b>${user.email}:</b> <em>{comment.message}</em></div>
-        </section>
+        
+        <Card className="messageCard" >
+        <Box height="auto" width='40%' margin="xsmall"  align="center" direction="row" justify="center" pad="xsmall" alignContent="center" class="message-card">        
+        <div class="message-text"><b>{comment.userProfile?.displayName}:</b><Link to={`/comments/edit/${comment.id}`}> <em>{comment.message}</em></Link></div>
+        </Box>
+        </Card>
       )
 
     }
-
-
-    
-
-
-
-    
-    
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

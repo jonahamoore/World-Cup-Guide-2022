@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 export const CommentContext = createContext();
 
 export const CommentProvider = (props) => {
-  const [comment, setComment] = useState([]);
+  const [comments, setComment] = useState([]);
   
   const GetAllComments = () => {
     return fetch("https://localhost:44311/api/Comment")
@@ -44,7 +44,7 @@ export const CommentProvider = (props) => {
 
 
   return (
-    <CommentContext.Provider value={{ comment, GetAllComments, GetCommentById, addComment, deleteComment, editComment }}>
+    <CommentContext.Provider value={{ comments, GetAllComments, GetCommentById, addComment, deleteComment, editComment }}>
       {props.children}
     </CommentContext.Provider>
   );

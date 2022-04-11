@@ -13,13 +13,12 @@ export const CommentList = () => {
 
       const navigate = useNavigate();
 
-//if else statement to display each category seperately so they do not loop over each other
      return (
        
         <div className="container">
           <div className="row justify-content-center">
 
-          <Button outline id="addComment" onClick={() => {navigate("/comments/add")}}>write a message</Button> {' '}
+          <Button color="gold" margin="small" pad="small" label="Send chat Message" outline id="addComment" onClick={() => {navigate("/comments/add")}}></Button> {' '}
       
               {comments.map((singleCommentInLoop) => (
                 <Comment key={singleCommentInLoop.id} comment={singleCommentInLoop} />

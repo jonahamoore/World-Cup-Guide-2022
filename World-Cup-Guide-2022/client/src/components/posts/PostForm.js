@@ -75,7 +75,7 @@ export const PostForm = () => {
       id="title"
       name="postTitle"
       onChange={handleControlledInputChange}
-      value={Post.title}
+      value={post.title}
     />
   </FormGroup>
   <FormGroup>
@@ -85,6 +85,7 @@ export const PostForm = () => {
     <Input
       id="content"
       name="postContent"
+      value={post.content}
       placeholder="let the people know"
       onChange={handleControlledInputChange}
     />
@@ -99,6 +100,7 @@ export const PostForm = () => {
           id="imageUrl"
           name="postImageUrl"
           onChange={handleControlledInputChange}
+          value={post.imageUrl}
         />
       </FormGroup>
     </Col>

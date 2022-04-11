@@ -5,7 +5,7 @@ import {  Button, Box, Image, Card, CardBody, CardHeader, CardFooter } from "gro
 
 
 export const CommentDetails = () => {
-    const { GetCommentsById, deletecomment } = useContext(CommentContext)
+    const { GetCommentsById, deleteComment } = useContext(CommentContext)
   
       const [comment, setComment] = useState({})
   
@@ -24,7 +24,7 @@ export const CommentDetails = () => {
         console.log("useEffect", commentId)
         GetCommentsById(commentId)
         .then((response) => {
-          setComment(response)
+          setComment(response).then(navigate(`/posts`))
         })
         }, [])
 

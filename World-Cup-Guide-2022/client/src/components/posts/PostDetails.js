@@ -31,7 +31,7 @@ export const PostDetails = () => {
         return (
           
         <section className="PostDetailsCard">
-        <div className="detailsCard">
+        <div align="center" margin="auto" className="detailsCard">
             <Card width="medium" pad="small" margin="small">
             <CardHeader>
               <h2 className="post_name">{post.title}</h2>

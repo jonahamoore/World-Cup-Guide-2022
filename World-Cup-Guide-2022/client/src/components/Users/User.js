@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const User = ({ user }) => {
   return (
     <Card className="m-4">      
-      <CardBody background="#87A878" margin='small'>
+      <CardBody background="#" margin='small'>
         <Link to={`/users/${user.id}`}><strong>{user.Email}</strong></Link>
         <ul className="users">
           <li>Email: {user.email}</li>

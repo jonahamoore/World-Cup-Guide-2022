@@ -2,15 +2,16 @@ import React, {useContext, useEffect, useState} from "react"
 import { CommentContext } from "../../providers/CommentProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { CommentCard } from "../comments/CommentCard";
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, CardGroup, CardImg, Form, FormGroup, Row, Col, Button, Label, Input  } from "reactstrap"; 
+import { Button, Card, Box } from "grommet";
 
 
 
 
 export const CommentForm = () => {
-    const {GetCommentById, addComment, editComment} = useContext(CommentContext)
+    const {GetCommentById, addComment, editComment, deleteComment } = useContext(CommentContext)
 
     const [comment, setComment] = useState({
+        id: "",
         message: "",
         userProfileId: JSON.parse(sessionStorage.getItem("userProfile")).id,
     });
@@ -27,27 +28,35 @@ export const CommentForm = () => {
         setComment(newComment)
     }
 
-    const handleSaveComment = (event) => {
+    const handleSaveComment = () => {
         if(comment.message === "")
         {
             alert("If you are going to say something, then say it already!")
         }  else {
           setIsLoading(true);
           if (commentId){
-              editPost({
+              editComment({
+                  id: comment.id,
                   userProfileId: JSON.parse(sessionStorage.getItem("userProfile")).id,                 
                   message: comment.message
               })
               .then(() => navigate(`/comment/detail/${comment.id}`))
           } else {
-          addPost({
+          addComment({
             userProfileId: JSON.parse(sessionStorage.getItem("userProfile")).id,                 
             message: comment.message
           })
-          .then(navigate("/Comment"));
+          .then(navigate("/comment"));
           }
       }
     }
+
+    const commentDelete = () => {
+      deleteComment(comment.id)
+          .then(() => {
+              navigate("/comment")
+          })
+  }
 
     useEffect(()=> {
       if(commentId){
@@ -60,10 +69,22 @@ export const CommentForm = () => {
           setIsLoading (false)
         }}, [])
 
+
         return(
-            <section class="chat-form">
-                <textarea type="textarea" id="chat-text" class="chat-text" placeholder="enter message.."></textarea>
-                <button id="sendMessage" class="btn btn-primary">Send</button>
+            <section className="chat-form">
+            <div className="editCommentCard">
+            <Box className="" margin="medium" align="center" direction="row" justify="center" pad="small">
+              <Card margin="xsmall" width="small" justify="center" align="center" >
+                <textarea type="textarea" onChange={handleControlledInputChange} id="message" className="chat-text" value={comment.message} placeholder="enter message.."></textarea>
+                <Button  disabled={isLoading} alignself="center" margin="xsmall" label="Post Comment" type="submit" className="btn btn-primary" color="gold" onClick={event => {event.preventDefault()
+                    handleSaveComment()}}>
+                    </Button>
+                    <Button color="gold" margin="xsmall"  label="Delete Comment" onClick={commentDelete}></Button>
+                    <Button outline color="gold" label="Back to Comments" onClick={() => navigate("/Posts")}>
+                    </Button>
+              </Card>
+            </Box>
+              </div>
             </section>
         )
 
